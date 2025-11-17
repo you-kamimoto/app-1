@@ -1,0 +1,57 @@
+section {
+  >.container {
+    container-type: inline-size;
+    inline-size: var(--content-inline-size);
+    margin-inline: auto;
+
+    >.posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+      gap: 2cqi;
+    }
+
+    >.pagination {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      align-items: center;
+
+      >.arrow {
+        display: flex;
+        align-items: center;
+        gap: 1.5cqi;
+
+        >button {
+          display: grid;
+          place-content: center;
+          aspect-ratio: 1;
+          inline-size: 1.6lh;
+          border: 1px solid currentColor;
+          border-radius: 4px;
+
+          &::after {
+            display: inline-grid;
+            content: "";
+            justify-self: end;
+            -webkit-mask-image: var(--icon-angle);
+            mask-image: var(--icon-angle);
+            block-size: .8lh;
+            aspect-ratio: 1;
+            background-color: currentColor;
+          }
+
+          &.prev {
+            &::after {
+              rotate: .5turn;
+            }
+          }
+        }
+      }
+
+      >p {
+        font-family: monospace;
+        font-size: 14px;
+        color: var(--secondary);
+      }
+    }
+  }
+}

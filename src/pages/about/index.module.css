@@ -1,0 +1,39 @@
+section {
+  >.container {
+    container-type: inline-size;
+    inline-size: var(--content-inline-size);
+    margin-inline: auto;
+
+    >.about.Wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(min(300px,100%),1fr));
+      gap: 2cqi;
+
+      >.aboutImage {
+        >img {
+          inline-size: 100%;
+          aspect-ratio: 1;
+          object-fit: cover;
+          clip-path: inset(0 round .5rem);
+        }
+      }
+
+      >.aboutText {
+        >h1 {
+          font-size: max(22px,4cqi);
+          margin-block-end: 1cqi;
+        }
+
+        >.position {
+          font-size: max(12px,1.7cqi);
+          margin-block-end: 3cqi;
+        }
+
+        >* {
+          font-size: max(14px,2cqi);
+        }
+
+      }
+    }
+  }
+}

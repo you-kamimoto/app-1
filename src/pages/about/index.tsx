@@ -1,6 +1,33 @@
 // src/pages/about/index.tsx
-export default function About() {
+import AboutSection from "../../components/about";
+import styles from "./index.module.css"
+import portrait from '../../assets/portrait.png-QKmVB2a0.webp'
+
+export default function AboutPage() {
   return (
-    <h1>About</h1>
-  )
+    <section>
+      <div className={styles.container}>
+        <AboutSection
+          imageClass={styles.aboutImage}
+          textClass={styles.aboutText}
+          image={portrait}
+          title={import.meta.env.VITE_GIT_NAME}
+          position="Software Developer"
+          text={
+            <>
+              Hi, I'm a software developer based in Tokyo. 👋<br />
+              I enjoy working with modern web technologies and creating seamless user experiences.
+            </>
+          }
+          className={styles.about}
+          classes={{
+            wrapper: styles.Wrapper,
+            image: styles.aboutImage,
+            text: styles.aboutText,
+            position: styles.position,
+          }}
+        />
+      </div>
+    </section>
+  );
 }

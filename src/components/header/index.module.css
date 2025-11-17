@@ -1,0 +1,50 @@
+@layer component {
+  .header {
+    contain: strict;
+    display: grid;
+    block-size: 80px;
+    margin-block-end: 80px;
+
+    >div {
+      inline-size: var(--content-inline-size);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      place-content: center;
+
+      >div {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 1rem;
+
+        >a {
+          >img {
+            inline-size: 50px;
+          }
+        }
+      }
+
+      >nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        >a {
+          text-decoration: none;
+          &[aria-current="page"] {
+            text-decoration: underline;
+          }
+
+        }
+        
+      }
+    }
+    &[data-layout='home']{
+      margin-block-start: 25svb;
+      nav{
+        display: none;
+      }
+    }
+  }
+}

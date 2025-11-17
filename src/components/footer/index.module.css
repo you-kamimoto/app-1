@@ -1,0 +1,31 @@
+@layer component {
+  .footer {
+    contain: strict;
+    display: grid;
+    block-size: 80px;
+    margin-block-start: 25svb;
+    >div {
+      inline-size: var(--content-inline-size);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+              place-content: center;
+
+      >small {
+        font-size: 12px;
+      }
+      >a{
+        font-size: 12px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: .5em;
+        text-decoration: none;
+        >svg{
+          inline-size: 20px;
+        }
+      }
+    }
+
+  }
+}

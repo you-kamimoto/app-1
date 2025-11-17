@@ -1,0 +1,21 @@
+@layer component {
+  .author {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5em;
+    align-items: center;
+    font-size: max(12px, 1.8cqi);
+    > .avatar {
+      inline-size: 0.8lh;
+      aspect-ratio: 1;
+      background: var(--avatar, #b9b9b9);
+      clip-path: circle();
+    }
+    > .name {
+      inline-size: max-content;
+      color: var(--secondary);
+      text-box: trim-both;
+    }
+  }
+}
+ 

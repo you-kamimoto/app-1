@@ -16,7 +16,7 @@
 
   :where(html) {
     -webkit-text-size-adjust: none;
-    color-scheme: dark light;
+    /* color-scheme: dark light; */
     tab-size: 2;
     scrollbar-gutter: stable;
     interpolate-size: allow-keywords;
@@ -146,13 +146,13 @@
     }
   } */
   @property --icon-arrow {
-    syntax: "<url>";
+    syntax: '<url>';
     inherits: false;
     initial-value: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12.47 6.47a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H6a.75.75 0 0 1 0-1.5h10.19l-3.72-3.72a.75.75 0 0 1 0-1.06"/></svg>');
   }
 
   @property --icon-angle {
-    syntax: "<url>";
+    syntax: '<url>';
     inherits: false;
     initial-value: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4L16 12L8 20" /></svg>');
   }
@@ -160,63 +160,21 @@
   :root {
     --max-inline-size: 860px;
     --space: clamp(1rem, 0.368rem + 3.16vw, 1.75rem);
-    --content-inline-size: min(
-      calc(100% - var(--space) * 2),
-      var(--max-inline-size)
-    );
-    --primary: light-dark(
-      oklch(23% 0 none),
-      oklch(98% 0 none)
-    ); /* #191919 / #fafafa */
-    --secondary: light-dark(
-      oklch(55% 0 none),
-      oklch(72% 0 none)
-    ); /* #484848 / #a6a6a6 */
-    --bg: light-dark(
-      oklch(98% 0 none),
-      oklch(23% 0 none)
-    ); /* #fafafa / #191919 */
-    --fg: light-dark(
-      oklch(95% 0 none),
-      oklch(26% 0 none)
-    ); /* #b9b9b9 / #595959 */
-    --border: light-dark(
-      oklch(78% 0 none),
-      oklch(46% 0 none)
-    ); /* #b9b9b9 / #595959 */
+    --content-inline-size: min(calc(100% - var(--space) * 2), var(--max-inline-size));
+    --primary:   light-dark(oklch(21% 0 none), oklch(98% 0 none)); /* #191919 / #fafafa */
+    --secondary: light-dark(oklch(40% 0 none), oklch(72% 0 none)); /* #484848 / #a6a6a6 */
+    --bg:        light-dark(oklch(98% 0 none), oklch(21% 0 none)); /* #fafafa / #191919 */
+    --fg:        light-dark(oklch(78% 0 none), oklch(46% 0 none)); /* #b9b9b9 / #595959 */
+    --border:    light-dark(oklch(78% 0 none), oklch(46% 0 none)); /* #b9b9b9 / #595959 */
 
     ::selection {
-      background-color: light-dark(oklch(20% 0 none), oklch(98% 0 none));
-      color: light-dark(white, black);
-    }
-  }
-  html {
-    @media (prefers-color-scheme: dark) {
-      html {
-        color-scheme: dark;
-      }
-    }
-    @media (prefers-color-scheme: light) {
-      html {
-        color-scheme: light;
-      }
-    }
-    &[data-theme="dark"] {
-      color-scheme: dark;
-      :where(img) {
-        filter: brightness(0.9);
-      }
-    }
-    &[data-theme="light"] {
-      color-scheme: light;
+      background-color: light-dark(oklch(21% 0 none), oklch(98% 0 none));
+      color: white;
     }
   }
   body {
     background-color: var(--bg);
     color: var(--primary);
-    /*@media (prefers-reduced-motion: no-preference) {
-      transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }*/
     h1 {
       font-size: 2.3em;
     }
@@ -241,77 +199,16 @@
 
     > :where(header) {
       grid-area: header;
-      padding-inline: calc(
-        env(safe-area-inset-left) + env(safe-area-inset-right)
-      );
+      padding-inline: calc(env(safe-area-inset-left) + env(safe-area-inset-right));
     }
     > :where(main) {
       grid-area: main;
-      padding-inline: calc(
-        env(safe-area-inset-left) + env(safe-area-inset-right)
-      );
+      padding-inline: calc(env(safe-area-inset-left) + env(safe-area-inset-right));
     }
     > :where(footer) {
       grid-area: footer;
-      padding-inline: calc(
-        env(safe-area-inset-left) + env(safe-area-inset-right)
-      );
+      padding-inline: calc(env(safe-area-inset-left) + env(safe-area-inset-right));
       padding-block-end: env(safe-area-inset-bottom);
     }
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-delay: -1ms !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    background-attachment: initial !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-    transition-delay: -1ms !important;
-  }
-}
-
-/*@supports (animation-timeline: scroll(root)) {
-  @property --scroll {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  @property --scroll-delaye {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  @property --scroll-direction {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-  @property --scroll-amount {
-    syntax: '<integer>';
-    inherits: true;
-    initial-value: 0;
-  }
-  @keyframes set-scroll-props {
-    to {
-      --scroll: 600;
-      --scroll-delaye: 600;
-    }
-  }
-  :root {
-    --scroll-effect-duration: 0.3s;
-    animation: set-scroll-props linear both;
-    animation-timeline: scroll(root);
-  }
-  body {
-    transition: --scroll-delaye calc(var(--scroll-effect-duration) + .01s);
-    --scroll-velocity: calc(var(--scroll) - var(--scroll-delaye));
-    --scroll-speed: max(var(--scroll-velocity), -1 * var(--scroll-velocity));
-    --scroll-direction: calc(var(--scroll-velocity) / var(--scroll-speed));
-    --scroll-easing: cubic-bezier(0.33, 1, 0.68, 1);
-  }
-}*/

@@ -1,0 +1,22 @@
+article {
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: subgrid;
+  row-gap: .5rem;
+  grid-row: span 4;
+  margin-block-end: 5cqi;
+
+  >a {
+    >img {
+      clip-path: inset(0 round .5rem);
+    }
+  }
+  >time{
+    font-size: max(12px,1.8cqi);
+  }
+  >h2{
+    font-size: max(18px,3cqi);
+  }
+
+}
