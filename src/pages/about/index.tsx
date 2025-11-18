@@ -10,8 +10,6 @@ export default function AboutPage() {
     <section>
       <div className={styles.container}>
         <AboutSection
-          imageClass={styles.aboutImage}
-          textClass={styles.aboutText}
           image={portrait}
           title={import.meta.env.VITE_GIT_NAME}
           position="Software Developer"

@@ -4,9 +4,21 @@ import { useParams, Link } from "react-router-dom";
 import Author from '../../components/author'
 import styles from "./id.module.css"
 
+type Post = {
+  title: string;
+  date: string;
+  author: string;
+  body: string;
+  visual?: {
+    url: string;
+    width?: number;
+    height?: number;
+  };
+};
+
 export default function PostDetail() {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<Post | null>(null); // ← 型つけた！
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +31,8 @@ export default function PostDetail() {
             "X-MICROCMS-API-KEY": import.meta.env.VITE_MICROCMS_API_KEY,
           },
         });
-        const data = await res.json();
+
+        const data = (await res.json()) as Post; // ← 型断言！
         setPost(data);
       } catch (err) {
         console.error("Error fetching post:", err);
@@ -27,6 +40,7 @@ export default function PostDetail() {
         setIsLoading(false);
       }
     };
+
     fetchPost();
   }, [id]);
 
@@ -35,28 +49,42 @@ export default function PostDetail() {
 
   return (
     <>
-    <title>{`${import.meta.env.VITE_APP_NAME} | ${post.title}` }</title>
-    <section>
-      <article className={styles.container}>
-        <header className={styles.head}>
-          <time dateTime={post.date}>
-            {new Date(post.date ?? 0).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </time>
-          <h1>{post.title}</h1>
-          <Author author={post.author} />
-        </header>
-        {post.visual && <img src={post.visual.url} alt={post.title} width={post.visual.width} height={post.visual.height} className={styles.visual} />}
-        <div
-          className={styles.body}
-          dangerouslySetInnerHTML={{ __html: post.body }}
-        />
-        <Link to="/posts" className={styles.link}>Back to posts</Link>
-      </article>
-    </section>
+      <title>{`${import.meta.env.VITE_APP_NAME} | ${post.title}`}</title>
+      <section>
+        <article className={styles.container}>
+          <header className={styles.head}>
+            <time dateTime={post.date}>
+              {new Date(post.date ?? 0).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+
+            <h1>{post.title}</h1>
+            <Author author={post.author} />
+          </header>
+
+          {post.visual && (
+            <img
+              src={post.visual.url}
+              alt={post.title}
+              width={post.visual.width}
+              height={post.visual.height}
+              className={styles.visual}
+            />
+          )}
+
+          <div
+            className={styles.body}
+            dangerouslySetInnerHTML={{ __html: post.body }}
+          />
+
+          <Link to="/posts" className={styles.link}>
+            Back to posts
+          </Link>
+        </article>
+      </section>
     </>
   );
 }

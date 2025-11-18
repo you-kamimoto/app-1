@@ -1,5 +1,5 @@
 // src/components/about/index.tsx
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type AboutSectionProps = {
   image?: string;
