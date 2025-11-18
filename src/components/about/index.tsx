@@ -1,10 +1,11 @@
 // src/components/about/index.tsx
+import { ReactNode } from "react";
 
 type AboutSectionProps = {
   image?: string;
   title: string;
   position?: string;
-  text: string;
+  text: ReactNode;
   className?: string;
   classes?: {
     wrapper?: string;
