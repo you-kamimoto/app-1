@@ -5,6 +5,8 @@ import portrait from '../../assets/portrait.png-QKmVB2a0.webp'
 
 export default function AboutPage() {
   return (
+    <>
+    <title>{`${import.meta.env.VITE_APP_NAME} | About` }</title>
     <section>
       <div className={styles.container}>
         <AboutSection
@@ -29,5 +31,6 @@ export default function AboutPage() {
         />
       </div>
     </section>
+    </>
   );
 }

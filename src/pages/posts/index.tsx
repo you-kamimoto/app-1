@@ -45,6 +45,8 @@ export default function Posts() {
   const totalPages = Math.ceil(totalCount / limit);
 
   return (
+    <>
+    <title>{`${import.meta.env.VITE_APP_NAME} | Posts ${page}-${totalPages}` }</title>
     <section>
       <div className={styles.container}>
         {isLoading ? (
@@ -85,5 +87,6 @@ export default function Posts() {
         )}
       </div>
     </section>
+    </>
   );
 }

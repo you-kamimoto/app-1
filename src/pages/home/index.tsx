@@ -37,6 +37,7 @@ export default function Home() {
 
   return (
     <>
+    <title>{`${import.meta.env.VITE_APP_NAME} | Home` }</title>
       <section className={styles.sec01}>
         <div className={styles.container}>
           <AboutSection

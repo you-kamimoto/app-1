@@ -34,6 +34,8 @@ export default function PostDetail() {
   if (!post) return <p>記事が見つかりませんでした。</p>;
 
   return (
+    <>
+    <title>{`${import.meta.env.VITE_APP_NAME} | ${post.title}` }</title>
     <section>
       <article className={styles.container}>
         <header className={styles.head}>
@@ -55,5 +57,6 @@ export default function PostDetail() {
         <Link to="/posts" className={styles.link}>Back to posts</Link>
       </article>
     </section>
+    </>
   );
 }
