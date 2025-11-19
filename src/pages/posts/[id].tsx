@@ -1,27 +1,21 @@
 // src/pages/posts/[id].tsx
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { type Post } from '../../libs/cms'
 import Author from '../../components/author'
 import styles from "./id.module.css"
 
-type Post = {
-  title: string;
-  date: string;
-  author: {
-    name: string;
-    avatar?: {
-      url: string;
-      width?: number;
-      height?: number;
-    };
-  };
-  body: string;
-  visual?: {
-    url: string;
-    width?: number;
-    height?: number;
-  };
-};
+// type Post = {
+//   title: string;
+//   date: string;
+//   author: string;
+//   body: string;
+//   visual?: {
+//     url: string;
+//     width?: number;
+//     height?: number;
+//   };
+// };
 
 export default function PostDetail() {
   const { id } = useParams();
