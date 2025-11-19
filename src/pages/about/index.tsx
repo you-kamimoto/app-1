@@ -15,7 +15,7 @@ export default function AboutPage() {
           position="Software Developer"
           text={
             <>
-              Hi, I'm a software developer based in Tokyo. 👋
+              Hi, I'm a software developer based in Tokyo. 👋<br />
               I enjoy working with modern web technologies and creating seamless user experiences.
             </>
           }

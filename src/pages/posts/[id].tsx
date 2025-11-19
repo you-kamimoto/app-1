@@ -7,7 +7,14 @@ import styles from "./id.module.css"
 type Post = {
   title: string;
   date: string;
-  author: string;
+  author: {
+    name: string;
+    avatar?: {
+      url: string;
+      width?: number;
+      height?: number;
+    };
+  };
   body: string;
   visual?: {
     url: string;
@@ -20,6 +27,7 @@ export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null); // ← 型つけた！
   const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -32,8 +40,8 @@ export default function PostDetail() {
           },
         });
 
-        const data = (await res.json()) as Post; // ← 型断言！
-        setPost(data);
+        const json = await res.json();
+        setPost(json);
       } catch (err) {
         console.error("Error fetching post:", err);
       } finally {
